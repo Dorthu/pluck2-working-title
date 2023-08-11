@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://InventoryItem.gd"
 }, {
+"base": "AnimationPlayerTrigger",
+"class": "LadderTrigger",
+"language": "GDScript",
+"path": "res://Levels/LivingRoom/LadderTrigger.gd"
+}, {
 "base": "Node2D",
 "class": "Level",
 "language": "GDScript",
@@ -142,6 +147,7 @@ _global_script_class_icons={
 "DialogTree": "res://DialogTree/dialog_tree.svg",
 "Inventory": "",
 "InventoryItem": "",
+"LadderTrigger": "",
 "Level": "",
 "LevelRoom": "",
 "Overlay": "",
