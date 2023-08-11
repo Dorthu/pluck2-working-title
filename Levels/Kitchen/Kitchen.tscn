@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Levels/Kitchen/background_final.png" type="Texture" id=1]
+[ext_resource path="res://Levels/Room.gd" type="Script" id=2]
+[ext_resource path="res://Resources/RoomChangeTrigger.gd" type="Script" id=3]
+[ext_resource path="res://Resources/Clickable.tscn" type="PackedScene" id=4]
+
+[node name="Kitchen" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="ToLivingRoom" parent="." instance=ExtResource( 4 )]
+position = Vector2( 43, 292 )
+scale = Vector2( 5.99397, 21.0885 )
+
+[node name="click" type="Node" parent="ToLivingRoom"]
+script = ExtResource( 3 )
+roomTarget = "LivingRoom"
+rightSide = true
+
+[node name="ToBedroom" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1438, 270 )
+scale = Vector2( 9.92619, 19.7675 )
+
+[node name="click" type="Node" parent="ToBedroom"]
+script = ExtResource( 3 )
+roomTarget = "Bedroom"
+
+[node name="ToCellar" parent="." instance=ExtResource( 4 )]
+position = Vector2( 357, 278 )
+scale = Vector2( 7.03068, 11.523 )
+
+[node name="click" type="Node" parent="ToCellar"]
+script = ExtResource( 3 )
+roomTarget = "Cellar"

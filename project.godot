@@ -1,0 +1,183 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Trigger",
+"class": "AnimationPlayerTrigger",
+"language": "GDScript",
+"path": "res://Resources/AnimationPlayerTrigger.gd"
+}, {
+"base": "Trigger",
+"class": "ChainTrigger",
+"language": "GDScript",
+"path": "res://Resources/ChainTrigger.gd"
+}, {
+"base": "Node2D",
+"class": "Clickable",
+"language": "GDScript",
+"path": "res://Resources/Clickable.gd"
+}, {
+"base": "TextBoxTrigger",
+"class": "CollectTrigger",
+"language": "GDScript",
+"path": "res://Resources/CollectTrigger.gd"
+}, {
+"base": "Clickable",
+"class": "Collectable",
+"language": "GDScript",
+"path": "res://Resources/Collectable.gd"
+}, {
+"base": "Container",
+"class": "DayFader",
+"language": "GDScript",
+"path": "res://Resources/DayFade.gd"
+}, {
+"base": "CenterContainer",
+"class": "DialogBox",
+"language": "GDScript",
+"path": "res://Dialog/DialogBox.gd"
+}, {
+"base": "MarginContainer",
+"class": "DialogController",
+"language": "GDScript",
+"path": "res://Dialog/DialogController.gd"
+}, {
+"base": "Node",
+"class": "DialogEntry",
+"language": "GDScript",
+"path": "res://DialogTree/DialogEntry.gd"
+}, {
+"base": "Node",
+"class": "DialogTree",
+"language": "GDScript",
+"path": "res://DialogTree/DialogTree.gd"
+}, {
+"base": "Control",
+"class": "Inventory",
+"language": "GDScript",
+"path": "res://Inventory.gd"
+}, {
+"base": "Control",
+"class": "InventoryItem",
+"language": "GDScript",
+"path": "res://InventoryItem.gd"
+}, {
+"base": "Node2D",
+"class": "Level",
+"language": "GDScript",
+"path": "res://Levels/Level.gd"
+}, {
+"base": "Node2D",
+"class": "LevelRoom",
+"language": "GDScript",
+"path": "res://Levels/Room.gd"
+}, {
+"base": "Node2D",
+"class": "Overlay",
+"language": "GDScript",
+"path": "res://Levels/Overlay.gd"
+}, {
+"base": "Control",
+"class": "OverlayGuard",
+"language": "GDScript",
+"path": "res://Resources/OverlayGuard.gd"
+}, {
+"base": "Trigger",
+"class": "QuestAdvancementTrigger",
+"language": "GDScript",
+"path": "res://Resources/QuestAdvancementTrigger.gd"
+}, {
+"base": "ChainTrigger",
+"class": "QuestDependentTrigger",
+"language": "GDScript",
+"path": "res://Resources/QuestDependentTrigger.gd"
+}, {
+"base": "Trigger",
+"class": "RoomChangeTrigger",
+"language": "GDScript",
+"path": "res://Resources/RoomChangeTrigger.gd"
+}, {
+"base": "Trigger",
+"class": "ShowOverlayTrigger",
+"language": "GDScript",
+"path": "res://Resources/ShowOverlayTrigger.gd"
+}, {
+"base": "Trigger",
+"class": "TextBoxTrigger",
+"language": "GDScript",
+"path": "res://Resources/TextBoxTrigger.gd"
+}, {
+"base": "Trigger",
+"class": "ToggleTrigger",
+"language": "GDScript",
+"path": "res://Resources/ToggleTrigger.gd"
+}, {
+"base": "Node",
+"class": "Trigger",
+"language": "GDScript",
+"path": "res://Resources/Trigger.gd"
+}, {
+"base": "Node2D",
+"class": "main",
+"language": "GDScript",
+"path": "res://main.gd"
+} ]
+_global_script_class_icons={
+"AnimationPlayerTrigger": "",
+"ChainTrigger": "",
+"Clickable": "",
+"CollectTrigger": "res://Resources/collect-trigger.svg",
+"Collectable": "",
+"DayFader": "",
+"DialogBox": "",
+"DialogController": "",
+"DialogEntry": "res://DialogTree/event_handler.svg",
+"DialogTree": "res://DialogTree/dialog_tree.svg",
+"Inventory": "",
+"InventoryItem": "",
+"Level": "",
+"LevelRoom": "",
+"Overlay": "",
+"OverlayGuard": "",
+"QuestAdvancementTrigger": "",
+"QuestDependentTrigger": "",
+"RoomChangeTrigger": "res://DialogTree/change-room-trigger.svg",
+"ShowOverlayTrigger": "",
+"TextBoxTrigger": "res://Resources/text-box-trigger.svg",
+"ToggleTrigger": "res://Resources/toggle-trigger.svg",
+"Trigger": "",
+"main": ""
+}
+
+[application]
+
+config/name="Pluck 2 -working-title"
+run/main_scene="res://main.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+GameController="*res://GameController.gd"
+DialogSystem="*res://Dialog/DialogSystem.gd"
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
