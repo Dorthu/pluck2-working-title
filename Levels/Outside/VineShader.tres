@@ -1,0 +1,27 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float width = 1.0;
+
+void fragment() {
+	vec4 t = texture(TEXTURE, UV);
+	if (t.a != 0.0) {
+		COLOR = t;
+	} else {
+		bool found = false;
+		for (float x = -1.0*width; x <= width; x+=width) {
+		for (float y = -1.0*width; y <= width; y+=width) {
+				if (texture(TEXTURE, UV + TEXTURE_PIXEL_SIZE * vec2(x, y)).a != 0.0) {
+					COLOR = vec4(0.0, 0.0, 0.0, 1.0);
+					found = true;
+					break;
+				}
+			}
+		}
+		if (!found) {
+			COLOR = t;
+		}
+	}
+}"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/Room.gd" type="Script" id=1]
-[ext_resource path="res://Levels/LivingRoom/background_final.png" type="Texture" id=2]
+[ext_resource path="res://Levels/LivingRoom/New living room.png" type="Texture" id=2]
 [ext_resource path="res://Resources/RoomChangeTrigger.gd" type="Script" id=3]
 [ext_resource path="res://Resources/Clickable.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/LivingRoom/LadderTrigger.gd" type="Script" id=5]
@@ -65,8 +65,8 @@ script = ExtResource( 3 )
 roomTarget = "Kitchen"
 
 [node name="ToLoft" parent="GroundFloor" instance=ExtResource( 4 )]
-position = Vector2( 1937, 172 )
-scale = Vector2( 11.76, 16.84 )
+position = Vector2( 2000, 195 )
+scale = Vector2( 9.88, 19.16 )
 
 [node name="click" type="Node" parent="GroundFloor/ToLoft"]
 script = ExtResource( 5 )
@@ -80,11 +80,19 @@ anims/ladderUp = SubResource( 1 )
 position = Vector2( 1937, 300 )
 scale = Vector2( 11.76, 16.84 )
 
+[node name="ToOutside" parent="GroundFloor" instance=ExtResource( 4 )]
+position = Vector2( 1189, 283 )
+scale = Vector2( 13.16, 18.76 )
+
+[node name="click" type="Node" parent="GroundFloor/ToOutside"]
+script = ExtResource( 3 )
+roomTarget = "Outside"
+
 [node name="Loft" type="Node2D" parent="."]
 
 [node name="ToGroundFloor" parent="Loft" instance=ExtResource( 4 )]
-position = Vector2( 1922, -96 )
-scale = Vector2( 13.6, 8.94882 )
+position = Vector2( 1992, -136 )
+scale = Vector2( 11.84, 10.4288 )
 
 [node name="click" type="Node" parent="Loft/ToGroundFloor"]
 script = ExtResource( 5 )
