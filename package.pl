@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-$GAME_NAME = "untitled2";
+$GAME_NAME = "pluck2-working-title";
 
 print "Clear export dir? [y/N]? ";
 $answer = <STDIN>;

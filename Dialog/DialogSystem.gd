@@ -7,7 +7,6 @@ var dialog_controller = preload("res://Dialog/DialogController.tscn")
 
 # stateful vars
 var curController: DialogController = null
-var dialog_tree: Dictionary = {}
 
 func show_dialog(dialogEntry: DialogEntry):
 	if curController != null:
