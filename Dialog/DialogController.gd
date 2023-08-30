@@ -14,9 +14,9 @@ func show_entry(entry: DialogEntry):
 	cur_box = dialog.instance()
 	
 	# use the box to split the text into lines
-	var text = entry.get_parent().get_text_for_key(entry.textKey)
+	var text = entry.get_parent().get_text_for_key(entry.get_name())
 	print("Text key:")
-	print(entry.textKey)
+	print(entry.get_name())
 	print("Text:")
 	print(text)
 	cur_text = cur_box.break_string(text)

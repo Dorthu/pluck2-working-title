@@ -7,6 +7,11 @@ export var dialogKey: NodePath
 
 func fire(_data: Trigger.TriggerFireData) -> bool:
 	var entry = get_node(dialogKey)
+	
+	if entry == null:
+		push_error("TextBoxTrigger " + get_path() + " activated with  invalid dialogKey " + dialogKey)
+		return
+	
 	DialogSystem.show_dialog(entry)
 	
 	yield(DialogSystem, "dialogActive")

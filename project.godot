@@ -59,11 +59,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://DialogTree/DialogTree.gd"
 }, {
-"base": "Reference",
-"class": "DialogTreeEntries",
-"language": "GDScript",
-"path": "res://Levels/LivingRoom/DialogKeys.gd"
-}, {
 "base": "Control",
 "class": "Inventory",
 "language": "GDScript",
@@ -150,7 +145,6 @@ _global_script_class_icons={
 "DialogController": "",
 "DialogEntry": "res://DialogTree/event_handler.svg",
 "DialogTree": "res://DialogTree/dialog_tree.svg",
-"DialogTreeEntries": "",
 "Inventory": "",
 "InventoryItem": "",
 "LadderTrigger": "",

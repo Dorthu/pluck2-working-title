@@ -2,20 +2,38 @@ extends Node
 tool
 class_name DialogTree, "res://DialogTree/dialog_tree.svg"
 
-export (Script) var choices setget choices_set
+func _process(_delta):
+	if not Engine.editor_hint:
+		return
+	
+	if len(_get_lookup().keys()) == get_child_count():
+		return
+	
+	_fix_children()
 
-func choices_set(value: Script):
-	print("Choices set!")
-	choices = value
-	var raw_choices = get_text_key_choices()
-	print("Raw choices are this:")
-	print(raw_choices)
-	for c in get_children():
-		if c is DialogEntry:
-			c.set_text_key_choices(raw_choices)
-
-func get_text_key_choices():
-	return choices.new().get_dialog_keys()
+func _fix_children():
+	print("Fixing children..")
+	# makes the child nodes of this node match the keys in our lookups script
+	var children = get_children()
+	var expected = _get_lookup().duplicate()
+	
+	for c in children:
+		if c.get_name() in expected:
+			expected.erase(c.get_name())
+		else:
+			print("Remvoing unexpected child " + c.get_name())
+			remove_child(c)
+	
+	for k in expected.keys():
+		print("Adding missing child %s" % k)
+		var entry = DialogEntry.new()
+		entry.set_name(k)
+		add_child(entry)
+		entry.set_owner(get_tree().edited_scene_root)
 
 func get_text_for_key(key: String):
-	return choices.new().get_text_for_key(key)
+	return _get_lookup().get(key)
+
+func _get_lookup() -> Dictionary:
+	# subclasses should override this to provide their own lookup table
+	return {}
