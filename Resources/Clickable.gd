@@ -20,6 +20,8 @@ func _ready():
 	
 	if myRoom:
 		myRoom.connect("toggleClickables", self, "_on_Room_ToggleClickables")
+	else:
+		push_warning("%s to find parent room" % self)
 
 func _get_configuration_warning():
 	#if treeTarget.is_empty():

@@ -1,9 +1,21 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Levels/Cellar/background.png" type="Texture" id=1]
 [ext_resource path="res://Levels/Room.gd" type="Script" id=2]
 [ext_resource path="res://Resources/RoomChangeTrigger.gd" type="Script" id=3]
 [ext_resource path="res://Resources/Clickable.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Cellar/tmp-light-ambient.png" type="Texture" id=5]
+[ext_resource path="res://Levels/Cellar/tmp-lightcone.png" type="Texture" id=6]
+[ext_resource path="res://Levels/Cellar/barrels.png" type="Texture" id=7]
+[ext_resource path="res://Levels/Cellar/barrels_n.png" type="Texture" id=8]
+[ext_resource path="res://Levels/Cellar/one_barrel.png" type="Texture" id=9]
+[ext_resource path="res://Levels/Cellar/PlayerLight.gd" type="Script" id=10]
+[ext_resource path="res://Levels/Cellar/one_barrel_n.png" type="Texture" id=11]
+[ext_resource path="res://Levels/Cellar/roots.png" type="Texture" id=12]
+[ext_resource path="res://Levels/Cellar/roots_n.png" type="Texture" id=13]
+[ext_resource path="res://Resources/TextBoxTrigger.gd" type="Script" id=15]
+[ext_resource path="res://Levels/Cellar/CellarDialogTree.gd" type="Script" id=16]
+[ext_resource path="res://DialogTree/DialogEntry.gd" type="Script" id=17]
 
 [node name="Cellar" type="Node2D"]
 script = ExtResource( 2 )
@@ -19,3 +31,48 @@ scale = Vector2( 11.4592, 15.4219 )
 [node name="click" type="Node" parent="ToKitchen"]
 script = ExtResource( 3 )
 roomTarget = "Kitchen"
+
+[node name="AmbientLight" type="Light2D" parent="."]
+position = Vector2( 536, 307 )
+texture = ExtResource( 5 )
+
+[node name="DarknessCharlie" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0, 1 )
+
+[node name="PlayerLight" type="Light2D" parent="."]
+position = Vector2( 349, 146 )
+scale = Vector2( 1.62, 1.62 )
+texture = ExtResource( 6 )
+shadow_enabled = true
+script = ExtResource( 10 )
+
+[node name="Barrels" type="Sprite" parent="."]
+position = Vector2( 214, 372 )
+scale = Vector2( 0.832805, 0.832805 )
+texture = ExtResource( 7 )
+normal_map = ExtResource( 8 )
+
+[node name="Roots" type="Sprite" parent="."]
+position = Vector2( 262, 74 )
+texture = ExtResource( 12 )
+normal_map = ExtResource( 13 )
+
+[node name="DialogTree" type="Node" parent="."]
+script = ExtResource( 16 )
+
+[node name="BARREL" type="Node" parent="DialogTree"]
+script = ExtResource( 17 )
+
+[node name="Clickable" parent="." instance=ExtResource( 4 )]
+position = Vector2( 359, 475 )
+scale = Vector2( 9.16469, 6.23882 )
+
+[node name="Sprite" type="Sprite" parent="Clickable"]
+position = Vector2( 0.327335, -0.320572 )
+scale = Vector2( 0.109114, 0.160287 )
+texture = ExtResource( 9 )
+normal_map = ExtResource( 11 )
+
+[node name="click" type="Node" parent="Clickable"]
+script = ExtResource( 15 )
+dialogKey = NodePath("../../DialogTree/BARREL")

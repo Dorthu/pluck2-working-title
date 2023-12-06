@@ -13,6 +13,7 @@ func show_dialog(dialogEntry: DialogEntry):
 		push_warning("Attempted to show dialog while another dialog was active!")
 		return
 	
+	GameController.currentLevel.curRoom.set_interactable(false)
 	curController = dialog_controller.instance()
 	GameController.root.add_ui_element(curController)
 	curController.show_entry(dialogEntry)
@@ -22,6 +23,7 @@ func dialog_finished():
 	var dismissing = curController
 	curController = null
 	emit_signal("dialogActive", false, dismissing)
+	GameController.currentLevel.curRoom.set_interactable(true)
 
 func force_dismiss_dialog():
 	if curController != null:
