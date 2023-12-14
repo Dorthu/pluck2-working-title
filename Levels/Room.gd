@@ -4,7 +4,12 @@ class_name LevelRoom
 
 export var initialCameraPan: float = 0
 
-onready var width = $Background.texture.get_width()
+var width = 0
+
+func _ready():
+	if $Background:
+		# a RoomLayer will not have a texture, as it is an overlay on top of a room
+		width = $Background.texture.get_width()
 
 
 # our parent level will call this when it's ready; we can use it to listen to signals it emits
