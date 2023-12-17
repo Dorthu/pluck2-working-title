@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Levels/Room.gd" type="Script" id=1]
 [ext_resource path="res://Levels/Outside/tmp-background.png" type="Texture" id=2]
 [ext_resource path="res://Levels/Outside/test-vine.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Resources/RoomChangeTrigger.gd" type="Script" id=4]
-[ext_resource path="res://Resources/Clickable.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 754, 65.5 )
@@ -25,11 +23,3 @@ position = Vector2( 749, 511 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
 position = Vector2( -4, 0 )
 shape = SubResource( 1 )
-
-[node name="Door" parent="." instance=ExtResource( 5 )]
-position = Vector2( 168, 356 )
-scale = Vector2( 7.76, 8.32 )
-
-[node name="click" type="Node" parent="Door"]
-script = ExtResource( 4 )
-roomTarget = "LivingRoom"

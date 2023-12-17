@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Levels/Room.gd" type="Script" id=1]
 [ext_resource path="res://Levels/LivingRoom/New living room.png" type="Texture" id=2]
@@ -7,7 +7,9 @@
 [ext_resource path="res://Levels/LivingRoom/LadderTrigger.gd" type="Script" id=5]
 [ext_resource path="res://DialogTree/DialogEntry.gd" type="Script" id=6]
 [ext_resource path="res://Levels/LivingRoom/DialogTree.gd" type="Script" id=7]
+[ext_resource path="res://Resources/ToggleTrigger.gd" type="Script" id=8]
 [ext_resource path="res://Resources/TextBoxTrigger.gd" type="Script" id=9]
+[ext_resource path="res://Levels/arrow.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ladderUp"
@@ -51,6 +53,7 @@ offset = Vector2( 0, -600 )
 [node name="GroundFloor" type="Node2D" parent="."]
 
 [node name="ToBedroom" parent="GroundFloor" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 75, 302 )
 scale = Vector2( 7.04, 25.04 )
 
@@ -60,6 +63,7 @@ roomTarget = "Bedroom"
 rightSide = true
 
 [node name="ToKitchen" parent="GroundFloor" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 2860, 257 )
 scale = Vector2( 14.16, 25.52 )
 
@@ -83,13 +87,13 @@ anims/ladderUp = SubResource( 1 )
 position = Vector2( 1937, 300 )
 scale = Vector2( 11.76, 16.84 )
 
-[node name="ToOutside" parent="GroundFloor" instance=ExtResource( 4 )]
-position = Vector2( 1189, 283 )
-scale = Vector2( 13.16, 18.76 )
+[node name="hover" type="Node" parent="GroundFloor/ToLoft"]
+script = ExtResource( 8 )
 
-[node name="click" type="Node" parent="GroundFloor/ToOutside"]
-script = ExtResource( 3 )
-roomTarget = "Outside"
+[node name="toggle" type="Sprite" parent="GroundFloor/ToLoft/hover"]
+position = Vector2( 2007, 171 )
+rotation = 1.49189
+texture = ExtResource( 10 )
 
 [node name="test" parent="GroundFloor" instance=ExtResource( 4 )]
 position = Vector2( 423, 244 )
@@ -100,6 +104,7 @@ script = ExtResource( 9 )
 dialogKey = NodePath("../../../DialogTree/EXAMPLE")
 
 [node name="Loft" type="Node2D" parent="."]
+position = Vector2( 0, -2 )
 
 [node name="ToGroundFloor" parent="Loft" instance=ExtResource( 4 )]
 position = Vector2( 1992, -136 )
@@ -115,6 +120,14 @@ anims/ladderDown = SubResource( 2 )
 
 [node name="camera" type="Camera2D" parent="Loft/ToGroundFloor/click"]
 position = Vector2( 1928, 295 )
+
+[node name="hover" type="Node" parent="Loft/ToGroundFloor"]
+script = ExtResource( 8 )
+
+[node name="toggle" type="Sprite" parent="Loft/ToGroundFloor/hover"]
+position = Vector2( 1987, -243 )
+rotation = -1.60522
+texture = ExtResource( 10 )
 
 [node name="DialogTree" type="Node" parent="."]
 script = ExtResource( 7 )

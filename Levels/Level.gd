@@ -36,7 +36,8 @@ func _ready():
 		quests[key] = 0
 	
 	GameController.currentLevel = self
-	GameController.snap_camera(curRoom.initialCameraPan)
+	if not curRoom.overrides_initial_snap():
+		GameController.snap_camera(curRoom.initialCameraPan)
 
 func get_room_width():
 	return curRoom.width

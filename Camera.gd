@@ -25,9 +25,13 @@ func _on_DialogSystem_DialogActive(active: bool, _controller: DialogController =
 func _on_GameController_ToggleCamera(active: bool):
 	cameraActive = active
 
-func _on_GameController_SnapCamera(pan: float):
+func _on_GameController_SnapCamera(pan: float, height: float, clampToRoom: bool):
+	print("Snapping camera to %s %s %s" % [pan, height, clampToRoom])
 	position.x = pan
-	clamp_to_room()
+	position. y = height
+	
+	if clampToRoom:
+		clamp_to_room()
 
 func _process(delta: float):
 	if not cameraActive or dialogActive:

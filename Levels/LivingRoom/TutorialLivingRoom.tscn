@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Levels/RoomLayer.gd" type="Script" id=1]
 [ext_resource path="res://Levels/LivingRoom/LivingRoom.tscn" type="PackedScene" id=2]
@@ -6,9 +6,11 @@
 [ext_resource path="res://DialogTree/DialogEntry.gd" type="Script" id=4]
 [ext_resource path="res://Resources/TextBoxTrigger.gd" type="Script" id=5]
 [ext_resource path="res://Resources/Clickable.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Resources/RoomChangeTrigger.gd" type="Script" id=7]
 
 [node name="TutorialLivingRoom" type="Node2D"]
 script = ExtResource( 1 )
+startNode = NodePath("AdventureStart")
 
 [node name="Room" parent="." instance=ExtResource( 2 )]
 
@@ -18,6 +20,9 @@ script = ExtResource( 3 )
 [node name="TUTORIAL_TEST" type="Node" parent="DialogTree"]
 script = ExtResource( 4 )
 
+[node name="STAY_ON_TRACK" type="Node" parent="DialogTree"]
+script = ExtResource( 4 )
+
 [node name="Clickable" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2300, 72 )
 scale = Vector2( 5.44001, 5.44 )
@@ -25,3 +30,30 @@ scale = Vector2( 5.44001, 5.44 )
 [node name="click" type="Node" parent="Clickable"]
 script = ExtResource( 5 )
 dialogKey = NodePath("../../DialogTree/TUTORIAL_TEST")
+
+[node name="ToOutside" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1189, 283 )
+scale = Vector2( 13.16, 18.76 )
+
+[node name="click" type="Node" parent="ToOutside"]
+script = ExtResource( 7 )
+roomTarget = "TutorialOutside"
+
+[node name="ToBedroom" parent="." instance=ExtResource( 6 )]
+position = Vector2( 77, 282 )
+scale = Vector2( 8.66167, 26.6418 )
+
+[node name="click" type="Node" parent="ToBedroom"]
+script = ExtResource( 5 )
+dialogKey = NodePath("../../DialogTree/STAY_ON_TRACK")
+
+[node name="ToKitchen" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2860, 201 )
+scale = Vector2( 16.4353, 32.5786 )
+
+[node name="click" type="Node" parent="ToKitchen"]
+script = ExtResource( 5 )
+dialogKey = NodePath("../../DialogTree/STAY_ON_TRACK")
+
+[node name="AdventureStart" type="Node2D" parent="."]
+position = Vector2( 890, -300 )
