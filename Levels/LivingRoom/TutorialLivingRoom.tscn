@@ -17,7 +17,7 @@
 
 [node name="TutorialLivingRoom" type="Node2D"]
 script = ExtResource( 1 )
-startNode = NodePath("DEBUG_DownstiarsStart")
+startNode = NodePath("AdventureStart")
 
 [node name="Room" parent="." instance=ExtResource( 2 )]
 position = Vector2( -1, 0 )
@@ -27,21 +27,30 @@ script = ExtResource( 3 )
 
 [node name="TUTORIAL_TEST" type="Node" parent="DialogTree"]
 script = ExtResource( 4 )
-
-[node name="DAD_QUEST_1" type="Node" parent="DialogTree"]
-script = ExtResource( 4 )
-
-[node name="DAD_QUEST_2" type="Node" parent="DialogTree"]
-script = ExtResource( 4 )
-
-[node name="DAD_QUEST_3" type="Node" parent="DialogTree"]
-script = ExtResource( 4 )
+text = "This is in the tutorial layer only"
 
 [node name="QUEST_LOCK_1" type="Node" parent="DialogTree"]
 script = ExtResource( 4 )
+text = "I should talk to Dad - he's by the front door"
 
 [node name="QUEST_LOCK_2" type="Node" parent="DialogTree"]
 script = ExtResource( 4 )
+text = "Dad needs me to go outside and get a veggie from the garden"
+
+[node name="DAD_QUEST_1" type="Node" parent="DialogTree"]
+script = ExtResource( 4 )
+profile = "dad_neutral"
+text = "I need you to go out to the graden and harvest a veggie for me."
+
+[node name="DAD_QUEST_2" type="Node" parent="DialogTree"]
+script = ExtResource( 4 )
+profile = "dad_neutral"
+text = "Here, use this knife"
+
+[node name="DAD_QUEST_3" type="Node" parent="DialogTree"]
+script = ExtResource( 4 )
+profile = "dad_neutral"
+text = "Hurry back now!"
 
 [node name="Sword" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2300, 72 )

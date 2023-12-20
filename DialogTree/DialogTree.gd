@@ -18,9 +18,9 @@ func _fix_children():
 	var expected = _get_lookup().duplicate()
 	
 	for c in children:
-		if c.get_name() in expected:
-			expected.erase(c.get_name())
-		else:
+		#if c.get_name() in expected:
+		#	expected.erase(c.get_name())
+		#else:
 			print("Remvoing unexpected child " + c.get_name())
 			remove_child(c)
 	
@@ -28,6 +28,16 @@ func _fix_children():
 		print("Adding missing child %s" % k)
 		var entry = DialogEntry.new()
 		entry.set_name(k)
+		var value = expected[k]
+		var text = ""
+		var profile = "pat_neutral"
+		if typeof(value) == TYPE_ARRAY:
+			text = value[0]
+			profile = value[1]
+		else:
+			text = value
+		entry.text = text
+		entry.profile = profile
 		add_child(entry)
 		entry.set_owner(get_tree().edited_scene_root)
 

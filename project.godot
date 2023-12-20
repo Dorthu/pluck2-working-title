@@ -140,7 +140,7 @@ _global_script_classes=[ {
 "path": "res://main.gd"
 } ]
 _global_script_class_icons={
-"ABTrigger": "",
+"ABTrigger": "res://DialogTree/ab-trigger.svg",
 "AnimationPlayerTrigger": "",
 "ChainTrigger": "",
 "Clickable": "",

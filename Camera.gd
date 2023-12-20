@@ -29,7 +29,11 @@ func _on_GameController_ToggleCamera(active: bool):
 func _on_GameController_SnapCamera(pan: float, height: float, clampToRoom: bool):
 	print("Snapping camera to %s %s %s" % [pan, height, clampToRoom])
 	position.x = pan
-	position. y = height
+	if height > 0:
+		height = 300
+	else:
+		height = -300
+	position.y = height
 	
 	if clampToRoom:
 		clamp_to_room()

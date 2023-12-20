@@ -4,15 +4,16 @@ class_name DialogBox
 
 var content: String
 var total_delta: float = 0
-onready var text_box: RichTextLabel = $NinePatchRect/MarginContainer/Text
+onready var text_box: RichTextLabel = $NinePatchRect/MarginContainer/HBoxContainer/Text
 
 # this is how slowly/quickly characters appear in the text box, in characters/second
 # a value of 1.0 means "one character per second"
 const TIMING_MOD: float = 30.0
 
 # when created, set our content up
-func init(show_text: String):
+func init(show_text: String, profile: Resource):
 	content = show_text
+	$NinePatchRect/MarginContainer/HBoxContainer/Profile.texture = profile
 
 # when added to the scene, set the text and hide all characters
 func _ready():
@@ -33,7 +34,7 @@ func show_all():
 
 # given a string, breaks it into multiple strings, each of which will fit inside this text box
 func break_string(string: String) -> Array:
-	var font = $NinePatchRect/MarginContainer/Text.get_font("normal_font")
+	var font = $NinePatchRect/MarginContainer/HBoxContainer/Text.get_font("normal_font")
 	
 	var final = []
 	# split newlines - each newline in the original string is a next text box
@@ -44,8 +45,8 @@ func break_string(string: String) -> Array:
 		if not part:
 			continue
 		
-		var string_size = font.get_wordwrap_string_size(part, $NinePatchRect/MarginContainer/Text.margin_right)
-		if string_size.y < $NinePatchRect/MarginContainer/Text.margin_bottom:
+		var string_size = font.get_wordwrap_string_size(part, $NinePatchRect/MarginContainer/HBoxContainer/Text.margin_right)
+		if string_size.y < $NinePatchRect/MarginContainer/HBoxContainer/Text.margin_bottom:
 			final.append(part)
 		else:
 			# split the string into textbox-sized chunks
@@ -61,8 +62,8 @@ func _break_long_string(string: String, font: Font) -> Array:
 	var remaining = string
 	var pos = len(remaining)
 	while remaining:
-		var string_size = font.get_wordwrap_string_size(remaining.left(pos), $NinePatchRect/MarginContainer/Text.margin_right)
-		if string_size.y < $NinePatchRect/MarginContainer/Text.margin_bottom:
+		var string_size = font.get_wordwrap_string_size(remaining.left(pos), $NinePatchRect/MarginContainer/HBoxContainer/Text.margin_right)
+		if string_size.y < $NinePatchRect/MarginContainer/HBoxContainer/Text.margin_bottom:
 			result.append(remaining.left(pos))
 			remaining = remaining.right(pos)
 			pos = len(remaining)

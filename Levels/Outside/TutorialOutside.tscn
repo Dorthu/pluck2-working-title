@@ -40,9 +40,17 @@ script = ExtResource( 7 )
 
 [node name="VINE_IN_THE_WAY" type="Node" parent="DialogTree"]
 script = ExtResource( 8 )
-
-[node name="GET_FRUIT" type="Node" parent="DialogTree"]
-script = ExtResource( 8 )
+text = "I can't get to it past that wiggly vine"
 
 [node name="NEED_KNIFE" type="Node" parent="DialogTree"]
 script = ExtResource( 8 )
+text = "I can't get it free with my bare hands, I need to use the knife."
+
+[node name="GET_FRUIT" type="Node" parent="DialogTree"]
+script = ExtResource( 8 )
+text = "I cut a fruit down"
+
+[node name="TEST_NEW_PROFILE" type="Node" parent="DialogTree"]
+script = ExtResource( 8 )
+profile = "pat_sad"
+text = "This looks odd"

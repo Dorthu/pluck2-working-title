@@ -1,6 +1,6 @@
 extends Trigger
-tool
-class_name ABTrigger
+tool 
+class_name ABTrigger, "res://DialogTree/ab-trigger.svg"
 
 export var questName: String
 export var requiredMin: int = -1

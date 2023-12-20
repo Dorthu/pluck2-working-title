@@ -154,9 +154,18 @@ script = ExtResource( 7 )
 
 [node name="TEST_ONE" type="Node" parent="DialogTree"]
 script = ExtResource( 6 )
+text = "it worked"
 
 [node name="EXAMPLE" type="Node" parent="DialogTree"]
 script = ExtResource( 6 )
+profile = "pat_sad"
+text = "example text here"
 
 [node name="TUT_DAD_BECKONS" type="Node" parent="DialogTree"]
 script = ExtResource( 6 )
+profile = "dad_neutral"
+text = "Hey, you're finally up!  Give me a hand with this, will ya?"
+
+[node name="new" type="Node" parent="DialogTree"]
+script = ExtResource( 6 )
+text = "boo"

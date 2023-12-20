@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="54.324 32.15 85.366 87.029" width="85.366" height="87.029" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <ellipse style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" cx="95.205" cy="51.691" rx="13.442" ry="13.442"/>
+  <ellipse style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" cx="121.951" cy="97.284" rx="13.442" ry="13.442"/>
+  <ellipse style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" cx="70.953" cy="98.392" rx="13.442" ry="13.442" bx:origin="-1.005 2.737"/>
+  <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" d="M 89.246 63.47 L 78.437 86.475"/>
+  <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" d="M 102.273 64.024 L 115.022 85.089"/>
+</svg>
