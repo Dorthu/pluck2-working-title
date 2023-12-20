@@ -6,6 +6,7 @@ var LOOKUP = {
 	NEED_KNIFE = "I can't get it free with my bare hands, I need to use the knife.",
 	GET_FRUIT = "I cut a fruit down",
 	TEST_NEW_PROFILE = ["This looks odd", "pat_sad"],
+	SEE_GARDEN = ["Oh no, that wild vine is at it again!", "pad_sad"],
 }
 
 func _get_lookup() -> Dictionary:

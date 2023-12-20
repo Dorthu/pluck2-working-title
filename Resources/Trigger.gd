@@ -20,6 +20,12 @@ static func new_click_event(target: Node2D, event):
 static func new_hover_event(active: bool):
 	return TriggerFireData.new(null, null, active)
 
+static func new_seen_event(target: Node2D):
+	return TriggerFireData.new(target, null, true)
+	
+static func new_unseen_event(target: Node2D):
+	return TriggerFireData.new(target, null, false)
+
 # this must be implemented by all trigger types
 func fire(_data: TriggerFireData) -> bool:
 	push_warning("do_trigger called on base Trigger class!")

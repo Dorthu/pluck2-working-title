@@ -90,6 +90,11 @@ _global_script_classes=[ {
 "path": "res://Levels/Room.gd"
 }, {
 "base": "Node2D",
+"class": "LineOfSightTrigger",
+"language": "GDScript",
+"path": "res://Resources/LineOfSightTrigger.gd"
+}, {
+"base": "Node2D",
 "class": "Overlay",
 "language": "GDScript",
 "path": "res://Levels/Overlay.gd"
@@ -156,6 +161,7 @@ _global_script_class_icons={
 "LadderTrigger": "",
 "Level": "",
 "LevelRoom": "",
+"LineOfSightTrigger": "",
 "Overlay": "",
 "OverlayGuard": "",
 "QuestAdvancementTrigger": "",

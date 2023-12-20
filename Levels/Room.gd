@@ -29,3 +29,11 @@ func overrides_initial_snap() -> bool:
 # click events trigger clickables underneath
 func set_interactable(interactable: bool):
 	emit_signal("toggleClickables", interactable)
+
+func hide():
+	emit_signal("toggleClickables", false)
+	.hide()
+
+func show():
+	emit_signal("toggleClickables", true)
+	.show()
