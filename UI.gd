@@ -10,3 +10,9 @@ func _on_DialogSystem_DialogActive(active: bool, controller: DialogController = 
 
 func _on_GameController_CollectItem(item: InventoryItem):
 	$HUD/Inventory/Inventory.add_item(item)
+
+func _on_UI_mouse_entered():
+	$InOutTween.play("TweenIn")
+
+func _on_UI_mouse_exited():
+	$InOutTween.play_backwards("TweenIn")

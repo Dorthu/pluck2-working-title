@@ -4,6 +4,7 @@ var CAMERA_SPEED: float = 300.0
 var SCREEN_SIZE: Vector2 = Vector2(1024, 600)
 var PAN_EDGE_WIDTH: float = SCREEN_SIZE.x / 3
 var PAN_SPEED_DIVISOR: float = PAN_EDGE_WIDTH - 100
+var SCREEN_BOTTOM_DEAD_ZONE = 150
 
 # camera controlling variables; the camera can be disabled in the following ways:
 #  - if the GameController tells us not to active
@@ -39,6 +40,11 @@ func _process(delta: float):
 		return
 	
 	var mousePos = get_global_mouse_position()
+	
+	if mousePos.y > SCREEN_SIZE.y - SCREEN_BOTTOM_DEAD_ZONE:
+		# don't pan if you're looking at the inventory
+		return
+	
 	var mouseX = mousePos.x - self.position.x + SCREEN_SIZE.x/2
 	var speedMod = 1
 	
