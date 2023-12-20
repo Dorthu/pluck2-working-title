@@ -5,7 +5,7 @@ func _ready():
 	var _res = DialogSystem.connect("dialogActive", self, "_on_DialogSystem_DialogActive")
 	_res = GameController.connect("collect_item", self, "_on_GameController_CollectItem")
 
-func _on_DialogSystem_DialogActive(active: bool, controller: DialogController = null):
+func _on_DialogSystem_DialogActive(_active: bool, _controller: DialogController = null):
 	pass
 
 func _on_GameController_CollectItem(item: InventoryItem):

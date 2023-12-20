@@ -8,7 +8,7 @@ export var startNode: NodePath
 var width = 0
 
 func _ready():
-	if $Background:
+	if has_node("Background"):
 		# a RoomLayer will not have a texture, as it is an overlay on top of a room
 		width = $Background.texture.get_width()
 	
@@ -18,8 +18,7 @@ func _ready():
 
 
 # our parent level will call this when it's ready; we can use it to listen to signals it emits
-func registerLevel(level: Level):
-#	var _r = level.connect("advanceDay", self, "_on_Level_AdvanceDay")
+func registerLevel(_level: Level):
 	pass
 
 func overrides_initial_snap() -> bool:

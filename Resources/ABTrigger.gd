@@ -22,10 +22,10 @@ func _ready():
 func fire(data: Trigger.TriggerFireData) -> bool:
 	var questStatus: int = GameController.currentLevel.get_quest_status(questName)
 	if questStatus >= requiredMin and questStatus <= requiredMax:
-		ifTrue.fire(data)
+		var _res = ifTrue.fire(data)
 		yield(self, "trigger_finished")
 	else:
-		ifFalse.fire(data)
+		var _res = ifFalse.fire(data)
 		yield(self, "trigger_finished")
 	return true
 

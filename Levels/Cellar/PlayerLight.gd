@@ -9,11 +9,11 @@ func _ready():
 		myRoom = myRoom.get_parent()
 	
 	if myRoom:
-		var res = myRoom.connect("toggleClickables", self, "_on_Room_ToggleClickables")
+		myRoom.connect("toggleClickables", self, "_on_Room_ToggleClickables")
 	else:
 		push_warning("PlayerLight didn't find a parent room!")
 
-func _process(delta):
+func _process(_delta):
 	if follow:
 		self.position = get_global_mouse_position()
 

@@ -3,7 +3,6 @@ This is the main controller for the entire game, which handles management of all
 between levels.  This controller is a globally-referencable singleton.
 """
 extends Node
-signal timeChanged
 signal toggle_camera
 signal snap_camera
 signal collect_item

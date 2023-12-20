@@ -1,5 +1,4 @@
 extends Node2D
-signal advanceDay
 class_name Level
 
 onready var curRoom = $RoomHolder.get_child(0)
@@ -34,8 +33,6 @@ func _ready():
 	# quest names as strings easily, as a Dictionary type apparently can't accept type hints
 	for q in questNames:
 		quests[q] = 0
-	
-	var _res = GameController.connect("timeChanged", self, "_on_GameController_TimeChanged")
 	
 	# set all quests to just started
 	for key in quests.keys():

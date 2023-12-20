@@ -23,4 +23,5 @@ static func new_hover_event(active: bool):
 # this must be implemented by all trigger types
 func fire(_data: TriggerFireData) -> bool:
 	push_warning("do_trigger called on base Trigger class!")
+	emit_signal("trigger_finished")
 	return false
