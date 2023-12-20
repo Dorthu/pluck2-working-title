@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Levels/RoomLayer.gd" type="Script" id=1]
 [ext_resource path="res://Levels/LivingRoom/LivingRoom.tscn" type="PackedScene" id=2]
@@ -7,12 +7,20 @@
 [ext_resource path="res://Resources/TextBoxTrigger.gd" type="Script" id=5]
 [ext_resource path="res://Resources/Clickable.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Resources/RoomChangeTrigger.gd" type="Script" id=7]
+[ext_resource path="res://Levels/LivingRoom/tmp_dad.png" type="Texture" id=8]
+[ext_resource path="res://Resources/ChainTrigger.gd" type="Script" id=9]
+[ext_resource path="res://Resources/CollectTrigger.gd" type="Script" id=10]
+[ext_resource path="res://InventoryItem.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Levels/LivingRoom/tmp_knife.png" type="Texture" id=12]
+[ext_resource path="res://Resources/QuestDependentTrigger.gd" type="Script" id=13]
+[ext_resource path="res://Resources/QuestAdvancementTrigger.gd" type="Script" id=14]
 
 [node name="TutorialLivingRoom" type="Node2D"]
 script = ExtResource( 1 )
-startNode = NodePath("AdventureStart")
+startNode = NodePath("DEBUG_DownstiarsStart")
 
 [node name="Room" parent="." instance=ExtResource( 2 )]
+position = Vector2( -1, 0 )
 
 [node name="DialogTree" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -20,14 +28,26 @@ script = ExtResource( 3 )
 [node name="TUTORIAL_TEST" type="Node" parent="DialogTree"]
 script = ExtResource( 4 )
 
-[node name="STAY_ON_TRACK" type="Node" parent="DialogTree"]
+[node name="DAD_QUEST_1" type="Node" parent="DialogTree"]
 script = ExtResource( 4 )
 
-[node name="Clickable" parent="." instance=ExtResource( 6 )]
+[node name="DAD_QUEST_2" type="Node" parent="DialogTree"]
+script = ExtResource( 4 )
+
+[node name="DAD_QUEST_3" type="Node" parent="DialogTree"]
+script = ExtResource( 4 )
+
+[node name="QUEST_LOCK_1" type="Node" parent="DialogTree"]
+script = ExtResource( 4 )
+
+[node name="QUEST_LOCK_2" type="Node" parent="DialogTree"]
+script = ExtResource( 4 )
+
+[node name="Sword" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2300, 72 )
 scale = Vector2( 5.44001, 5.44 )
 
-[node name="click" type="Node" parent="Clickable"]
+[node name="click" type="Node" parent="Sword"]
 script = ExtResource( 5 )
 dialogKey = NodePath("../../DialogTree/TUTORIAL_TEST")
 
@@ -44,16 +64,92 @@ position = Vector2( 77, 282 )
 scale = Vector2( 8.66167, 26.6418 )
 
 [node name="click" type="Node" parent="ToBedroom"]
+script = ExtResource( 9 )
+
+[node name="QuestDependentTrigger" type="Node" parent="ToBedroom/click"]
+script = ExtResource( 13 )
+questName = "talkedToDad"
+requiredMax = 0
+
+[node name="text" type="Node" parent="ToBedroom/click/QuestDependentTrigger"]
 script = ExtResource( 5 )
-dialogKey = NodePath("../../DialogTree/STAY_ON_TRACK")
+dialogKey = NodePath("../../../../DialogTree/QUEST_LOCK_1")
+
+[node name="QuestDependentTrigger2" type="Node" parent="ToBedroom/click"]
+script = ExtResource( 13 )
+questName = "talkedToDad"
+requiredMin = 1
+requiredMax = 999
+
+[node name="TextBoxTrigger" type="Node" parent="ToBedroom/click/QuestDependentTrigger2"]
+script = ExtResource( 5 )
+dialogKey = NodePath("../../../../DialogTree/QUEST_LOCK_2")
 
 [node name="ToKitchen" parent="." instance=ExtResource( 6 )]
 position = Vector2( 2860, 201 )
 scale = Vector2( 16.4353, 32.5786 )
 
 [node name="click" type="Node" parent="ToKitchen"]
+script = ExtResource( 9 )
+
+[node name="QuestDependentTrigger" type="Node" parent="ToKitchen/click"]
+script = ExtResource( 13 )
+questName = "talkedToDad"
+requiredMax = 0
+
+[node name="text" type="Node" parent="ToKitchen/click/QuestDependentTrigger"]
 script = ExtResource( 5 )
-dialogKey = NodePath("../../DialogTree/STAY_ON_TRACK")
+dialogKey = NodePath("../../../../DialogTree/QUEST_LOCK_1")
+
+[node name="QuestDependentTrigger2" type="Node" parent="ToKitchen/click"]
+script = ExtResource( 13 )
+questName = "talkedToDad"
+requiredMin = 1
+requiredMax = 999
+
+[node name="TextBoxTrigger" type="Node" parent="ToKitchen/click/QuestDependentTrigger2"]
+script = ExtResource( 5 )
+dialogKey = NodePath("../../../../DialogTree/QUEST_LOCK_2")
 
 [node name="AdventureStart" type="Node2D" parent="."]
 position = Vector2( 890, -300 )
+
+[node name="Dad" parent="." instance=ExtResource( 6 )]
+position = Vector2( 936, 318 )
+scale = Vector2( 11.2511, 25.0052 )
+
+[node name="Sprite" type="Sprite" parent="Dad"]
+scale = Vector2( 0.0689803, 0.0310377 )
+texture = ExtResource( 8 )
+
+[node name="click" type="Node" parent="Dad"]
+script = ExtResource( 9 )
+
+[node name="TextBoxTrigger" type="Node" parent="Dad/click"]
+script = ExtResource( 5 )
+dialogKey = NodePath("../../../DialogTree/DAD_QUEST_1")
+
+[node name="CollectTrigger" type="Node" parent="Dad/click"]
+script = ExtResource( 10 )
+dialogKey = NodePath("../../../DialogTree/DAD_QUEST_2")
+PickupItem = NodePath("../../../knife")
+RemoveSource = false
+
+[node name="TextBoxTrigger3" type="Node" parent="Dad/click"]
+script = ExtResource( 5 )
+dialogKey = NodePath("../../../DialogTree/DAD_QUEST_3")
+
+[node name="QuestAdvancementTrigger" type="Node" parent="Dad/click"]
+script = ExtResource( 14 )
+questName = "talkedToDad"
+toStage = 1
+
+[node name="knife" parent="." instance=ExtResource( 11 )]
+margin_left = -235.0
+margin_top = -130.0
+margin_right = -235.0
+margin_bottom = -130.0
+texture = ExtResource( 12 )
+
+[node name="DEBUG_DownstiarsStart" type="Node2D" parent="."]
+position = Vector2( 709, 300 )

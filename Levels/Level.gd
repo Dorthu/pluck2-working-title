@@ -15,9 +15,10 @@ var fader = preload("res://Resources/DayFade.tscn")
 var checkEndOfDay = true
 
 # The quests for this level, and their status (and int)
-export var quests: Dictionary
+export (Array, String) var questNames: Array
+var quests: Dictionary
 
-func _ready():
+func _ready():	
 	# hide all rooms except the default one
 	for child in $RoomHolder.get_children():
 		child.registerLevel(self)
@@ -28,6 +29,11 @@ func _ready():
 	for child in $OverlayHolder.get_children():
 		overlaynameMap[child.name] = child
 		child.hide()
+	
+	# set up quest dictionary from given quest names.  This is an extra step so that I can specify
+	# quest names as strings easily, as a Dictionary type apparently can't accept type hints
+	for q in questNames:
+		quests[q] = 0
 	
 	var _res = GameController.connect("timeChanged", self, "_on_GameController_TimeChanged")
 	

@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Trigger",
+"class": "ABTrigger",
+"language": "GDScript",
+"path": "res://Resources/ABTrigger.gd"
+}, {
+"base": "Trigger",
 "class": "AnimationPlayerTrigger",
 "language": "GDScript",
 "path": "res://Resources/AnimationPlayerTrigger.gd"
@@ -135,6 +140,7 @@ _global_script_classes=[ {
 "path": "res://main.gd"
 } ]
 _global_script_class_icons={
+"ABTrigger": "",
 "AnimationPlayerTrigger": "",
 "ChainTrigger": "",
 "Clickable": "",

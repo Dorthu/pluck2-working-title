@@ -3,11 +3,13 @@ tool
 class_name CollectTrigger, "res://Resources/collect-trigger.svg"
 
 export var PickupItem: NodePath
+export var RemoveSource: bool = true
 
 func fire(data: Trigger.TriggerFireData) -> bool:
 	.fire(data)
 	handle_collect_item()
-	data.target.get_parent().remove_child(data.target)
+	if RemoveSource:
+		data.target.get_parent().remove_child(data.target)
 	emit_signal("trigger_finished")
 	return true
 
