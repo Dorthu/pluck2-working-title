@@ -12,7 +12,9 @@ func _ready():
 		# a RoomLayer will not have a texture, as it is an overlay on top of a room
 		width = $Background.texture.get_width()
 	
-	if startNode: # and GameController.gameStart:
+	# TODO - all rooms with a start node set wull snap the camera on game start - 
+	# ideally only the active room does this
+	if startNode and false: # and GameController.gameStart:
 		var node = get_node(startNode)
 		GameController.snap_camera(node.position.x, node.position.y, false)
 

@@ -185,6 +185,16 @@ config/icon="res://icon.png"
 GameController="*res://GameController.gd"
 DialogSystem="*res://Dialog/DialogSystem.gd"
 
+[display]
+
+window/size/resizable=false
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[global]
+
+glsl=true
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

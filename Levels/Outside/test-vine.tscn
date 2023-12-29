@@ -73,6 +73,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="VineBase"]
 material = SubResource( 9 )
+use_parent_material = true
 position = Vector2( -20, 4 )
 texture = ExtResource( 2 )
 region_enabled = true
@@ -96,6 +97,7 @@ shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Vine1"]
 material = SubResource( 10 )
+use_parent_material = true
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 140, 124, 60 )
@@ -117,6 +119,7 @@ shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Vine2"]
 material = SubResource( 11 )
+use_parent_material = true
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 80, 124, 60 )
@@ -138,6 +141,7 @@ shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Vine3"]
 material = SubResource( 12 )
+use_parent_material = true
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 124, 80 )

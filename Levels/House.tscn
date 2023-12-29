@@ -15,9 +15,9 @@ questNames = [ "cameDown", "talkedToDad", "vineHandled" ]
 
 [node name="RoomHolder" type="Node2D" parent="."]
 
-[node name="TutorialLivingRoom" parent="RoomHolder" instance=ExtResource( 7 )]
-
 [node name="TutorialOutside" parent="RoomHolder" instance=ExtResource( 8 )]
+
+[node name="TutorialLivingRoom" parent="RoomHolder" instance=ExtResource( 7 )]
 
 [node name="Cellar" parent="RoomHolder" instance=ExtResource( 4 )]
 
