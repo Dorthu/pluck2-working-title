@@ -6,10 +6,12 @@ extends Node
 signal toggle_camera
 signal snap_camera
 signal collect_item
+signal change_active_item
 
 var currentLevel: Level = null
 var root: main = null
 var gameStart: bool = true
+var activeItem: InventoryItem = null
 
 func do_camera(active: bool):
 	emit_signal("toggle_camera", active)
@@ -22,6 +24,14 @@ func collect_item(item: InventoryItem):
 
 func is_game_strat() -> bool:
 	return gameStart
-	
+
+func set_active_item(item: InventoryItem):
+	activeItem = item
+	emit_signal("change_active_item", item)
+
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.pressed and activeItem != null:
+		set_active_item(null)
+
 func _ready():
 	gameStart = false

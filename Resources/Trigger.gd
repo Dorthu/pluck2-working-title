@@ -7,6 +7,8 @@ class TriggerFireData:
 	var target: Node2D
 	var event
 	var hoverActive: bool
+	var item: InventoryItem
+	var item_name: String
 	
 	func _init(targetData: Node2D, eventData, hoverActiveData: bool):
 		self.target = targetData
@@ -25,6 +27,12 @@ static func new_seen_event(target: Node2D):
 	
 static func new_unseen_event(target: Node2D):
 	return TriggerFireData.new(target, null, false)
+
+static func new_item_event(target: Node2D, name: String, item: InventoryItem) -> TriggerFireData:
+	var ret = TriggerFireData.new(target, null, false)
+	ret.item = item
+	ret.item_name = name
+	return ret
 
 # this must be implemented by all trigger types
 func fire(_data: TriggerFireData) -> bool:

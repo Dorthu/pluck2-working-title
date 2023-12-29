@@ -4,7 +4,18 @@ class_name Clickable
 
 var clickEvent: Trigger = null
 var hoverEvent: Trigger = null
+var itemEvent: Trigger = null
 var active: bool = true
+
+func item_fire(name: String, item: InventoryItem):
+	if has_node(name):
+		var trigger = get_node(name)
+		if trigger is Trigger:
+			trigger.fire(Trigger.new_item_event(self, name, item))
+		else:
+			push_warning("Item triggered %s which is not a Trigger!" % name)
+	else:
+		push_warning("Item requested unknown event %s on Clickable" % name)
 
 func _ready():
 	for c in get_children():
@@ -12,6 +23,8 @@ func _ready():
 			clickEvent = c
 		elif c.name == "hover":
 			hoverEvent = c
+		elif name == "item":
+			itemEvent = c
 
 	# walk up the scene tree to find the Room we're in; if we're not in one that's fine too
 	var myRoom = get_parent()
@@ -38,7 +51,11 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 		return
 	
 	if clickEvent and event is InputEventMouseButton and event.pressed:
-		var _r = clickEvent.fire(Trigger.new_click_event(self, event))
+		var _r
+		if GameController.activeItem == null:
+			_r = clickEvent.fire(Trigger.new_click_event(self, event))
+		else:
+			_r = itemEvent.fire(Trigger.new_item_event(self, "default", GameController.activeItem))
 
 func _on_Area2D_mouse_entered():
 	if not active:
