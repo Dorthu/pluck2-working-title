@@ -4,12 +4,12 @@ extends Area2D
 
 class_name ItemResetFilter
 
-func _process(delta):
+func _process(_delta):
 	# follow the camera always
 	if get_viewport().get_camera():
 		self.position = get_viewport().get_camera().position
 
-func _on_ItemResetFilter_input_event(viewport, event, shape_idx):
+func _on_ItemResetFilter_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		print("Item Reset Filter Clicked!")
 	if event is InputEventMouseButton and event.pressed and GameController.activeItem:
