@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Levels/Room.gd" type="Script" id=1]
-[ext_resource path="res://Levels/LivingRoom/New living room.png" type="Texture" id=2]
+[ext_resource path="res://Levels/LivingRoom/tmp-living-room-lineart.png" type="Texture" id=2]
 [ext_resource path="res://Resources/RoomChangeTrigger.gd" type="Script" id=3]
 [ext_resource path="res://Resources/Clickable.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/LivingRoom/LadderTrigger.gd" type="Script" id=5]
@@ -18,7 +18,7 @@
 resource_name = "ladderUp"
 length = 2.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("../../../GroundFloor/ToLoft/click/camera:position")
+tracks/0/path = NodePath("../../../../GroundFloor/ToLoft/click/camera:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -87,7 +87,7 @@ root_node = NodePath("../../../../Loft/ToGroundFloor/click/animation")
 anims/ladderUp = SubResource( 1 )
 
 [node name="camera" type="Camera2D" parent="GroundFloor/ToLoft/click"]
-position = Vector2( 1937, 300 )
+position = Vector2( 1927, -110 )
 scale = Vector2( 11.76, 16.84 )
 
 [node name="hover" type="Node" parent="GroundFloor/ToLoft"]
@@ -133,7 +133,7 @@ Up = false
 anims/ladderDown = SubResource( 2 )
 
 [node name="camera" type="Camera2D" parent="Loft/ToGroundFloor/click/animation"]
-position = Vector2( 1928, 295 )
+position = Vector2( 1908, -298 )
 
 [node name="Check" type="Node" parent="Loft/ToGroundFloor/click"]
 script = ExtResource( 12 )

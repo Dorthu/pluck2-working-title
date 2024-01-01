@@ -16,8 +16,20 @@ script = ExtResource( 2 )
 [node name="Room" parent="." instance=ExtResource( 1 )]
 
 [node name="Vine" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1044, 467 )
+position = Vector2( 1030, 463 )
 z_index = 1
+
+[node name="VineClickable" parent="Vine" instance=ExtResource( 3 )]
+position = Vector2( -8, -110 )
+scale = Vector2( 11.8, 12.68 )
+
+[node name="click" type="Node" parent="Vine/VineClickable"]
+script = ExtResource( 6 )
+dialogKey = NodePath("../../../DialogTree/VINE_DESC")
+
+[node name="item" type="Node" parent="Vine/VineClickable"]
+script = ExtResource( 6 )
+dialogKey = NodePath("../../../DialogTree/VINE_KNIFE")
 
 [node name="Garden" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1255, 364 )
@@ -58,8 +70,17 @@ text = "This looks odd"
 
 [node name="SEE_GARDEN" type="Node" parent="DialogTree"]
 script = ExtResource( 8 )
-profile = "pad_sad"
+profile = "pat_sad"
 text = "Oh no, that wild vine is at it again!"
+
+[node name="VINE_DESC" type="Node" parent="DialogTree"]
+script = ExtResource( 8 )
+profile = "pat_sad"
+text = "This vine's always been trouble"
+
+[node name="VINE_KNIFE" type="Node" parent="DialogTree"]
+script = ExtResource( 8 )
+text = "Yeah, I'll cut the damned thing down"
 
 [node name="LineOfSightTrigger" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1253, 163 )

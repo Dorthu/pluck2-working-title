@@ -29,9 +29,5 @@ func set_active_item(item: InventoryItem):
 	activeItem = item
 	emit_signal("change_active_item", item)
 
-func _unhandled_input(event):
-	if event is InputEventMouseButton and event.pressed and activeItem != null:
-		set_active_item(null)
-
 func _ready():
 	gameStart = false

@@ -17,5 +17,7 @@ func _on_InventoryItem_gui_input(event):
 func _on_GameController_active_item_changed(new_active: InventoryItem):
 	if new_active == self:
 		print("I am now active")
+		$Selected.show()
 	else:
+		$Selected.hide()
 		print("I am not active")
