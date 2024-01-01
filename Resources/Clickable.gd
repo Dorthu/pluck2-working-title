@@ -59,7 +59,7 @@ func _on_Area2D_input_event(_viewport, event: InputEvent, _shape_idx):
 		else:
 			if itemEvent:
 				get_tree().set_input_as_handled()
-				_r = itemEvent.fire(Trigger.new_item_event(self, "default", GameController.activeItem))
+				_r = itemEvent.fire(Trigger.new_item_event(self, GameController.activeItem.name, GameController.activeItem))
 
 func _on_Area2D_mouse_entered():
 	if not active:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Levels/Room.gd" type="Script" id=1]
 [ext_resource path="res://Levels/LivingRoom/tmp-living-room-lineart.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Resources/ChainTrigger.gd" type="Script" id=11]
 [ext_resource path="res://Resources/QuestDependentTrigger.gd" type="Script" id=12]
 [ext_resource path="res://Resources/QuestAdvancementTrigger.gd" type="Script" id=13]
+[ext_resource path="res://Resources/ItemTrigger.gd" type="Script" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "ladderUp"
@@ -105,6 +106,9 @@ scale = Vector2( 3, 3.24 )
 [node name="click" type="Node" parent="GroundFloor/test"]
 script = ExtResource( 9 )
 dialogKey = NodePath("../../../DialogTree/EXAMPLE")
+
+[node name="item" type="Node" parent="GroundFloor/test"]
+script = ExtResource( 14 )
 
 [node name="Loft" type="Node2D" parent="."]
 position = Vector2( 0, -2 )
