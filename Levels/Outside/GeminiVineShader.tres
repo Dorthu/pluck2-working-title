@@ -1,0 +1,30 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform vec4 outline_color : hint_color = vec4(0.0, 0.0, 0.0, 1.0); // Black outline
+uniform float outline_width = 1.0; 
+uniform float alpha_threshold = 0.5; // Adjust as needed
+
+void fragment() {
+    vec4 tex_color = texture(TEXTURE, UV);
+
+    // Sample neighboring pixels for their alpha values
+	// Gemini had the width divided by TEXTURE_SIZE.xy (appropriate value only) - this isn't possible though
+	// I replaced it with the values of the actual texture for testing
+    float alpha_left = texture(TEXTURE, UV + vec2(-outline_width/124.0, 0.0)).a;
+    float alpha_right = texture(TEXTURE, UV + vec2(outline_width/124.0, 0.0)).a;
+    float alpha_bottom = texture(TEXTURE, UV + vec2(0.0, -outline_width/254.0)).a;
+    float alpha_top = texture(TEXTURE, UV + vec2(0.0, outline_width/254.0)).a;
+
+    // Detect edges based on alpha difference
+    if (abs(tex_color.a - alpha_left) > alpha_threshold ||
+        abs(tex_color.a - alpha_right) > alpha_threshold ||
+        abs(tex_color.a - alpha_bottom) > alpha_threshold ||
+        abs(tex_color.a - alpha_top) > alpha_threshold) {
+        COLOR = outline_color;
+    } else {
+        COLOR = tex_color; 
+    } 
+}"

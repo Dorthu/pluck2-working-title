@@ -1,7 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Levels/Outside/VineShader.tres" type="Shader" id=1]
 [ext_resource path="res://Levels/Outside/vine.png" type="Texture" id=2]
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = ExtResource( 1 )
+shader_param/width = 1.0
 
 [sub_resource type="GDScript" id=6]
 script/source = "extends Node2D
@@ -19,38 +23,23 @@ func _process(_delta):
 radius = 7.0
 height = 32.0
 
-[sub_resource type="ShaderMaterial" id=9]
-shader = ExtResource( 1 )
-shader_param/width = 1.0
-
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 3.65215
 height = 57.3176
-
-[sub_resource type="ShaderMaterial" id=10]
-shader = ExtResource( 1 )
-shader_param/width = 1.0
 
 [sub_resource type="CapsuleShape2D" id=3]
 radius = 4.0
 height = 51.9903
 
-[sub_resource type="ShaderMaterial" id=11]
-shader = ExtResource( 1 )
-shader_param/width = 1.0
-
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 3.0
 height = 63.0413
-
-[sub_resource type="ShaderMaterial" id=12]
-shader = ExtResource( 1 )
-shader_param/width = 1.0
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 3.16228
 
 [node name="Vine" type="Node2D"]
+material = SubResource( 14 )
 script = SubResource( 6 )
 
 [node name="Anchor" type="StaticBody2D" parent="."]
@@ -64,6 +53,7 @@ node_a = NodePath("../Anchor")
 node_b = NodePath("../VineBase")
 
 [node name="VineBase" type="RigidBody2D" parent="."]
+use_parent_material = true
 position = Vector2( -2, -25 )
 mass = 0.102041
 
@@ -72,7 +62,6 @@ rotation = -0.230582
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="VineBase"]
-material = SubResource( 9 )
 use_parent_material = true
 position = Vector2( -20, 4 )
 texture = ExtResource( 2 )
@@ -87,6 +76,7 @@ node_b = NodePath("../Vine1")
 disable_collision = false
 
 [node name="Vine1" type="RigidBody2D" parent="."]
+use_parent_material = true
 position = Vector2( -22, -78 )
 mass = 0.102041
 
@@ -96,7 +86,6 @@ rotation = -0.469088
 shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Vine1"]
-material = SubResource( 10 )
 use_parent_material = true
 texture = ExtResource( 2 )
 region_enabled = true
@@ -109,6 +98,7 @@ node_b = NodePath("../Vine2")
 disable_collision = false
 
 [node name="Vine2" type="RigidBody2D" parent="."]
+use_parent_material = true
 position = Vector2( -22, -138 )
 mass = 0.102041
 
@@ -118,7 +108,6 @@ rotation = 0.313006
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Vine2"]
-material = SubResource( 11 )
 use_parent_material = true
 texture = ExtResource( 2 )
 region_enabled = true
@@ -131,6 +120,7 @@ node_b = NodePath("../Vine3")
 disable_collision = false
 
 [node name="Vine3" type="RigidBody2D" parent="."]
+use_parent_material = true
 position = Vector2( -22, -208 )
 mass = 0.102041
 
@@ -140,7 +130,6 @@ rotation = 0.176655
 shape = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="Vine3"]
-material = SubResource( 12 )
 use_parent_material = true
 texture = ExtResource( 2 )
 region_enabled = true

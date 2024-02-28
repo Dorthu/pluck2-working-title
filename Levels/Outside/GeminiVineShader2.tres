@@ -1,0 +1,37 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform vec4 outline_color : hint_color = vec4(0.0, 0.0, 0.0, 1.0); // Black with full opacity
+uniform float outline_width = 0.3; // Default width of 1 pixel
+
+void fragment() {
+    // Sample the current pixel's color from the texture
+    vec4 tex_color = texture(TEXTURE, UV);
+    vec2 pixel_size = TEXTURE_PIXEL_SIZE;
+
+    // Sample neighboring pixels with offset based on pixel size
+    vec4 sample_left = texture(TEXTURE, UV - vec2(outline_width * pixel_size.x, 0.0));
+    vec4 sample_right = texture(TEXTURE, UV + vec2(outline_width * pixel_size.x, 0.0));
+    vec4 sample_bottom = texture(TEXTURE, UV - vec2(0.0, outline_width * pixel_size.y));
+    vec4 sample_top = texture(TEXTURE, UV + vec2(0.0, outline_width * pixel_size.y));
+
+    // Calculate a smooth transition value based on distance from the edge
+    float distance_left = abs(tex_color.a - sample_left.a);
+    float distance_right = abs(tex_color.a - sample_right.a);
+    float distance_bottom = abs(tex_color.a - sample_bottom.a);
+    float distance_top = abs(tex_color.a - sample_top.a);
+
+    // Apply smooth transition using a smoothstep function (adjust smoothness as needed)
+    float smooth_left = smoothstep(0.0, 0.2, distance_left);
+    float smooth_right = smoothstep(0.0, 0.2, distance_right);
+    float smooth_bottom = smoothstep(0.0, 0.2, distance_bottom);
+    float smooth_top = smoothstep(0.0, 0.2, distance_top);
+
+    // Combine smooth transition values with outline color
+    vec4 outline = mix(vec4(0.0), outline_color, smooth_left + smooth_right + smooth_bottom + smooth_top);
+
+    // Use alpha blending for a smoother transition
+    COLOR = mix(tex_color, outline, outline.a); 
+}"
