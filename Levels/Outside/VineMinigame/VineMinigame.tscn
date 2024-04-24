@@ -34,4 +34,5 @@ texture = SubResource( 4 )
 shape = SubResource( 5 )
 
 [node name="Vine" parent="." instance=ExtResource( 2 )]
-position = Vector2( 490, 116 )
+position = Vector2( 396, 2 )
+scale = Vector2( 2.17542, 2.2 )

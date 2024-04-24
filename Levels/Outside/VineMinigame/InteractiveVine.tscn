@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Levels/Outside/VineShader.tres" type="Shader" id=1]
 [ext_resource path="res://Levels/Outside/tmp-vine.png" type="Texture" id=2]
+[ext_resource path="res://Levels/Outside/VineMinigame/InteractiveVine.gd" type="Script" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -10,15 +11,84 @@ shader_param/width = 2.0
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 7.0
 
+[sub_resource type="CapsuleShape2D" id=3]
+
+[sub_resource type="CapsuleShape2D" id=4]
+
+[sub_resource type="CircleShape2D" id=5]
+
 [node name="Vine" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 material = SubResource( 1 )
 rotation = 3.14159
 texture = ExtResource( 2 )
 
 [node name="Collision" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
 position = Vector2( 0, 131 )
 shape = SubResource( 2 )
+
+[node name="Root" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Root"]
+shape = SubResource( 3 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2( 0, 20 )
+node_a = NodePath("../Root")
+node_b = NodePath("../Segment1")
+
+[node name="Segment1" type="RigidBody2D" parent="."]
+position = Vector2( 0, 41 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment1"]
+shape = SubResource( 4 )
+
+[node name="PinJoint2D2" type="PinJoint2D" parent="."]
+position = Vector2( 0, 62 )
+node_a = NodePath("../Segment1")
+node_b = NodePath("../Segment2")
+
+[node name="Segment2" type="RigidBody2D" parent="."]
+position = Vector2( 0, 81 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment2"]
+shape = SubResource( 4 )
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="."]
+position = Vector2( 0, 101 )
+node_a = NodePath("../Segment2")
+node_b = NodePath("../Segment3")
+
+[node name="Segment3" type="RigidBody2D" parent="."]
+position = Vector2( 0, 121 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment3"]
+shape = SubResource( 4 )
+
+[node name="PinJoint2D4" type="PinJoint2D" parent="."]
+position = Vector2( 0, 142 )
+node_a = NodePath("../Segment3")
+node_b = NodePath("../Segment4")
+
+[node name="Segment4" type="RigidBody2D" parent="."]
+position = Vector2( 0, 161 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment4"]
+shape = SubResource( 4 )
+
+[node name="PinJoint2D5" type="PinJoint2D" parent="."]
+position = Vector2( 0, 181 )
+node_a = NodePath("../Segment4")
+node_b = NodePath("../End")
+
+[node name="End" type="RigidBody2D" parent="."]
+position = Vector2( 0, 190 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
+shape = SubResource( 5 )
