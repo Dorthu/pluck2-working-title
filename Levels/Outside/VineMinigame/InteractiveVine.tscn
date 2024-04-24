@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Levels/Outside/VineShader.tres" type="Shader" id=1]
+[ext_resource path="res://Levels/Outside/tmp-vine.png" type="Texture" id=2]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/width = 2.0
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 7.0
+
+[node name="Vine" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 1 )
+rotation = 3.14159
+texture = ExtResource( 2 )
+
+[node name="Collision" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+position = Vector2( 0, 131 )
+shape = SubResource( 2 )
